@@ -1,6 +1,28 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
+#include "Grid.cpp"
+Grid grid("pattern.txt");
+
+
+
+// Cross-platform shit
+#ifdef _WINDOWS
+    // Windows: Sleep function = Sleep(ms)
+    #include <windows.h>
+    int sleep(int ms) {
+        return Sleep(ms);
+    }
+#else
+    // Linux: Sleep function = usleep(ms * 1000)
+    #include <unistd.h>
+    int sleep(int ms) {
+        return usleep(ms * 1000);
+    }
+#endif
+
+
+
 /*
 WIP
 const int FPS = 25;
@@ -23,22 +45,30 @@ int main() {
 	player.setPosition(150, 150);
 
 	sf::Sprite circle(blackCircleTexture);
-	circle.setOrigin(sf::Vector2f((circle.getLocalBounds().width / 2), circle.getLocalBounds().height / 2));
-	circle.setPosition(player.getPosition().x + player.getLocalbounds().width, player.getPosition().y + player.getLocalbounds().height);
+    
+	circle.setOrigin(sf::Vector2f (
+        circle.getLocalBounds().width  / 2,
+        circle.getLocalBounds().height / 2
+    ));
+    
+	circle.setPosition (
+        player.getPosition().x + player.getLocalBounds().width,
+        player.getPosition().y + player.getLocalBounds().height
+    );
 
 	while (renderWindow.isOpen()) {
 		/*
 		next_game_tick += SKIP_TICKS;
 		sleep_time = next_game_tick - GetTickCount();
 		if (sleep_time >= 0) {
-			Sleep(sleep_time);
+			sleep(sleep_time);
 		}
 		else {
 			// Shit, we are running behind!
 		}
 		*/
 		while (renderWindow.pollEvent(event)) {
-			if (event.type == sf::Event::EventType::Closed) {
+			if (event.type == sf::Event::Closed) {
 				renderWindow.close();
 			}
 
@@ -101,6 +131,7 @@ int main() {
 		renderWindow.draw(player);
 		renderWindow.draw(circle);
 		renderWindow.display();
-		_sleep(100);
+        
+		sleep(100);
 	}
 }
