@@ -1,0 +1,18 @@
+--- Todo List ---
+
+- Grid System: 
+ A B C D 
+1
+2
+3
+4
+
+50px by 50px
+path sprite
+wall sprite
+player sprite -> movement
+exit sprite
+
+- Black circle
+center on player (add player position)
+
