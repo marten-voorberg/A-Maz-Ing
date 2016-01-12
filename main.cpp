@@ -1,6 +1,28 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
+#include "Grid.cpp"
+Grid grid("pattern.txt");
+
+
+
+// Cross-platform shit
+#ifdef _WINDOWS
+    // Windows: Sleep function = Sleep(ms)
+    #include <windows.h>
+    int sleep(int ms) {
+        return Sleep(ms);
+    }
+#else
+    // Linux: Sleep function = usleep(ms * 1000)
+    #include <unistd.h>
+    int sleep(int ms) {
+        return usleep(ms * 1000);
+    }
+#endif
+
+
+
 /*
 WIP
 const int FPS = 25;
@@ -24,15 +46,23 @@ int main() {
 	player.setPosition(150, 150);
 
 	sf::Sprite circle(blackCircleTexture);
-	circle.setOrigin(sf::Vector2f((circle.getLocalBounds().width / 2), circle.getLocalBounds().height / 2));
-	circle.setPosition(player.getPosition().x, player.getPosition().y);
+
+	circle.setOrigin(sf::Vector2f (
+        circle.getLocalBounds().width  / 2,
+        circle.getLocalBounds().height / 2
+    ));
+
+	circle.setPosition (
+        player.getPosition().x + player.getLocalBounds().width + player.getLocalBounds().width / 2,
+        player.getPosition().y + player.getLocalBounds().height + player.getLocalBounds().width / 2
+    );
 
 	while (renderWindow.isOpen()) {
 		/*
 		next_game_tick += SKIP_TICKS;
 		sleep_time = next_game_tick - GetTickCount();
 		if (sleep_time >= 0) {
-			Sleep(sleep_time);
+			sleep(sleep_time);
 		}
 		else {
 			// Shit, we are running behind!
@@ -102,5 +132,10 @@ int main() {
 		renderWindow.draw(player);
 		renderWindow.draw(circle);
 		renderWindow.display();
+<<<<<<< HEAD
+=======
+
+		sleep(100);
+>>>>>>> 9e1b431a16b01e60e21b03c60c7c3d2e30c91ee3
 	}
 }
