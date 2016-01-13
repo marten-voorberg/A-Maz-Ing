@@ -1,0 +1,17 @@
+A map will manually be made inside a txt file.
+This txt file will be parsed into a two-d array.
+The items in this array will be positioned automagically.
+
+Map example:
+
+xxxxx
+xsoxx
+xxooo
+xxoxx
+xxexx
+
+o - path
+x - wall
+s - start
+e - end
+(later on we will add traps, keys and doors)

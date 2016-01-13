@@ -32,6 +32,7 @@ const int Skip = 1000 / FPS;
 int main() {
 
 	sf::RenderWindow renderWindow(sf::VideoMode(300, 300), "Sprite Demo");
+	renderWindow.setFramerateLimit(20);
 	sf::Event event;
 
 	sf::Texture guyTexture;
@@ -45,15 +46,15 @@ int main() {
 	player.setPosition(150, 150);
 
 	sf::Sprite circle(blackCircleTexture);
-    
+
 	circle.setOrigin(sf::Vector2f (
         circle.getLocalBounds().width  / 2,
         circle.getLocalBounds().height / 2
     ));
-    
+
 	circle.setPosition (
-        player.getPosition().x + player.getLocalBounds().width,
-        player.getPosition().y + player.getLocalBounds().height
+        player.getPosition().x + player.getLocalBounds().width + player.getLocalBounds().width / 2,
+        player.getPosition().y + player.getLocalBounds().height + player.getLocalBounds().width / 2
     );
 
 	while (renderWindow.isOpen()) {
@@ -131,7 +132,10 @@ int main() {
 		renderWindow.draw(player);
 		renderWindow.draw(circle);
 		renderWindow.display();
-        
+<<<<<<< HEAD
+=======
+
 		sleep(100);
+>>>>>>> 9e1b431a16b01e60e21b03c60c7c3d2e30c91ee3
 	}
 }
