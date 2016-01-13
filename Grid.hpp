@@ -7,6 +7,8 @@ class Grid {
 public:
   Grid(std::string);
   
+  bool canPass(int, int);
+  
   Item* grid[5][5];
   
   int playerX, playerY;

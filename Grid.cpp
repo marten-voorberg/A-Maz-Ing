@@ -5,30 +5,30 @@
 
 Grid::Grid(std::string filename) {
   // Open filestream for reading
-  std::ifstream file(filename.c_str());
+  std::ifstream file( filename.c_str() );
   
   char c;
   while( file.get(c) ) { // Get next char from file
     switch(c) {
-      case 'x':
-      this->grid[x][y] = new Wall();
-      break;
+      case 'x': // Wall
+        this->grid[x][y] = new Wall();
+        break;
       
-      case '-':
-      this->grid[x][y] = new Path(); 
-      break;
+      case '-': // Path
+        this->grid[x][y] = new Path(); 
+        break;
       
-      case 'o':
-      this->playerX = x;
-      this->playerY = y;
-      break;
+      case 'o': // Player starting point
+        this->playerX = x;
+        this->playerY = y;
+        break;
       
       case '\n':
-      // Ignore newlines, as it's a square
-      break;
+        // Ignore newlines, as it's a square
+        break;
       
       default:
-      std::cerr << "Invalid char '" << c << "' found in file!" << std::endl;
+        std::cerr << "Invalid char '" << c << "' found in file!" << std::endl;
     }
     
     ++x;
@@ -37,4 +37,8 @@ Grid::Grid(std::string filename) {
       x=0;
     }
   }
+}
+
+bool Grid::canPass(int x, int y) {
+  return grid[x][y] -> canPass;
 }
