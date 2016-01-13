@@ -4,6 +4,7 @@ Goals:
 - Black circle around the player
 - Movement with animation sprite
 - Turn a .txt file into a map
+- When player moves, move the screen as well
 - Pick up a key and be able to open a door with it
 - Multiple maps
 - Multiple characters
