@@ -10,14 +10,14 @@ Grid grid("pattern.txt");
 #ifdef _WINDOWS
     // Windows: Sleep function = Sleep(ms)
     #include <windows.h>
-    int sleep(int ms) {
-        return Sleep(ms);
+    void sleep(int ms) {
+        Sleep(ms);
     }
 #else
     // Linux: Sleep function = usleep(ms * 1000)
     #include <unistd.h>
-    int sleep(int ms) {
-        return usleep(ms * 1000);
+    void sleep(int ms) {
+        usleep(ms * 1000);
     }
 #endif
 

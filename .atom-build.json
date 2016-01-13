@@ -1,6 +1,0 @@
-{
-  "name": "Make and run",
-  "sh": true,
-  "cmd": "make",
-  "args": [ "run" ]
-}

@@ -9,6 +9,8 @@ class Grid {
         
         Item* grid[5][5];
         
+        int playerX, playerY;
+        
     private:
         int x,y;
 };

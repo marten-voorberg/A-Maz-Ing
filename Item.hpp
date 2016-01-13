@@ -5,7 +5,11 @@
 
 class Item {
     public:
-        Item(sf::Sprite&);
+        Item() {
+            // sprite = NULL;
+        }
+    
+        sf::Sprite sprite;
         
         bool canPass();
         bool isWall();
@@ -13,10 +17,13 @@ class Item {
 
 class Wall : public Item {
     public:
-        sf::Texture texture;
-	    texture.loadFromFile("images/Wall.png");
-        sf::Sprite sprite(texture);
-        Wall(sprite);
+        Wall() {
+            sf::Texture texture;
+            texture.loadFromFile("images/Wall.png");
+            sf::Sprite mysprite(texture);
+            
+            this->sprite = mysprite; // Item.sprite = Wall.mysprite 
+        }
     
         bool canPass() { return false; }
         bool isWall()  { return true;  }
@@ -27,8 +34,9 @@ class Path : public Item {
         Path() {
             sf::Texture texture;
             texture.loadFromFile("images/Path.png");
-            sf::Sprite sprite(texture);
-            Item(sprite);
+            sf::Sprite mysprite(texture);
+            
+            this->sprite = mysprite; // Item.sprite = Path.mysprite
         }
     
         bool canPass() { return true;  }

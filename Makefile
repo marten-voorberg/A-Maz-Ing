@@ -8,10 +8,10 @@ OUTPUTFILE = main
 CPP = g++
 
 # Compiler flags
-CPPFLAGS= -Wall  -I $(SMFLDIR)/include  -I .  ${args}
+CPPFLAGS= -Wall  -I .  ${args}
 
 # Libraries
-LIBS = -L $(SMFLDIR)/lib   -lsfml-audio  -lsfml-graphics  -lsfml-network  -lsfml-system  -lsfml-window
+LIBS =  -lsfml-audio  -lsfml-graphics  -lsfml-network  -lsfml-system  -lsfml-window
 
 
 all: main
@@ -19,13 +19,13 @@ all: main
 clean:
 	rm -f *.o *.gch $(OUTPUTFILE) 
 
-run: all
+run: main
 	@ export LD_LIBRARY_PATH=$(SMFLDIR)/lib
 	./$(OUTPUTFILE)
 
 main.o: main.cpp
-	$(CPP) $(CPPFLAGS) -c main.cpp   Grid.hpp Grid.cpp   Item.hpp Item.cpp
+	$(CPP) $(CPPFLAGS) -I $(SMFLDIR)/include -c main.cpp   Grid.hpp Grid.cpp   Item.hpp Item.cpp
 
 main: main.o
-	$(CPP) $(CPPFLAGS) -o $(OUTPUTFILE) *.o $(LIBS)
+	$(CPP) $(CPPFLAGS) main.o -o $(OUTPUTFILE)  $(LIBS) # -L $(SMFLDIR)/lib
     
