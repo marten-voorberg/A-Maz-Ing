@@ -3,46 +3,25 @@
 
 #include "SFML/Graphics.hpp"
 
+// Main Item class
 class Item {
-    public:
-        Item() {
-            // sprite = NULL;
-        }
-    
-        sf::Sprite sprite;
-        
-        bool canPass();
-        bool isWall();
+public:
+  Item();
+  
+  bool canPass;
+  sf::Sprite sprite;
 };
 
+// Wall class, which is a subclass of Item
 class Wall : public Item {
-    public:
-        Wall() {
-            sf::Texture texture;
-            texture.loadFromFile("images/Wall.png");
-            sf::Sprite mysprite(texture);
-            
-            this->sprite = mysprite; // Item.sprite = Wall.mysprite 
-        }
-    
-        bool canPass() { return false; }
-        bool isWall()  { return true;  }
+public:
+  Wall();
 };
 
+// Path class, which is a subclass of Path
 class Path : public Item {
-    public:
-        Path() {
-            sf::Texture texture;
-            texture.loadFromFile("images/Path.png");
-            sf::Sprite mysprite(texture);
-            
-            this->sprite = mysprite; // Item.sprite = Path.mysprite
-        }
-    
-        bool canPass() { return true;  }
-        bool isWall()  { return false; }
+public:
+  Path();
 };
-
-#include "Item.cpp"
 
 #endif // ITEM_H

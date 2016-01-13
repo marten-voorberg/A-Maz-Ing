@@ -1,31 +1,54 @@
-# SMFL directory
-SMFLDIR = ./SFML
+# Compiler
+CPP = g++
+
+# SFML directory (Doesn't work, this is here for decoration)
+SFMLDIR = ./SFML
+
+# Compiler flags
+#   -I $(SFMLDIR)/include
+CPPFLAGS = -Wall  -std=gnu++11  -I .  ${args}
+
+# Libraries
+#   -L $(SFMLDIR)/lib
+LIBS =  -lsfml-audio  -lsfml-graphics  -lsfml-network  -lsfml-system  -lsfml-window
 
 # Output file
 OUTPUTFILE = main
 
-# Compiler
-CPP = g++
-
-# Compiler flags
-CPPFLAGS= -Wall  -I .  ${args}
-
-# Libraries
-LIBS =  -lsfml-audio  -lsfml-graphics  -lsfml-network  -lsfml-system  -lsfml-window
-
-
 all: main
 
+# Remove all compiled files
+# (Usually ran before commiting, or when rebuilding)
 clean:
 	rm -f *.o *.gch $(OUTPUTFILE) 
 
-run: main
-	@ export LD_LIBRARY_PATH=$(SMFLDIR)/lib
+# Rebuild project
+rebuild:
+	make clean
+	make all
+
+# Run created project
+run:
+	make all
+	@ # @ export LD_LIBRARY_PATH=$(SMFLDIR)/lib
 	./$(OUTPUTFILE)
 
-main.o: main.cpp
-	$(CPP) $(CPPFLAGS) -I $(SMFLDIR)/include -c main.cpp   Grid.hpp Grid.cpp   Item.hpp Item.cpp
 
+# Actually building files
+
+# Item class
+Item.o: Item.hpp Item.cpp
+	$(CPP) $(CPPFLAGS) -c Item.hpp Item.cpp
+
+# Grid class (Requires Item class)
+Grid.o: Grid.hpp Grid.cpp Item.o
+	$(CPP) $(CPPFLAGS) -c Grid.hpp Grid.cpp
+
+# Main class (Requires Grid class)
+main.o: main.cpp Grid.o
+	$(CPP) $(CPPFLAGS) -c main.cpp
+
+# Actual program (Requires Main class)
 main: main.o
-	$(CPP) $(CPPFLAGS) main.o -o $(OUTPUTFILE)  $(LIBS) # -L $(SMFLDIR)/lib
+	$(CPP) $(CPPFLAGS) main.o -o $(OUTPUTFILE)  $(LIBS)
     
