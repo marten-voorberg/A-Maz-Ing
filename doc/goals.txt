@@ -1,0 +1,9 @@
+Goals:
+
+- Collision between player and walls
+- Black circle around the player
+- Movement with animation sprite
+- Turn a .txt file into a map
+- Pick up a key and be able to open a door with it
+- Multiple maps
+- Multiple characters
