@@ -1,5 +1,5 @@
 A map will manually be made inside a txt file.
-This txt file will be parsed into a two-d array.
+This txt file will be parsed into a 2D array.
 The items in this array will be positioned automagically.
 
 Map example:

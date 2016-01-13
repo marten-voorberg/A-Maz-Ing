@@ -8,10 +8,13 @@ public:
   Grid(std::string);
   
   bool canPass(int, int);
+  inline bool isFinished() {
+    return playerX==endX && playerY==endY;
+  }
   
   Item* grid[5][5];
   
-  int playerX, playerY;
+  int playerX, playerY, endX, endY;
   
 private:
   int x=0, y=0;

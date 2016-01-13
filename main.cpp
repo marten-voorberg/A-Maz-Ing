@@ -189,6 +189,11 @@ int main() {
           moveRight();
           LOG;
         }
+        
+        if(grid.isFinished()) {
+          std::cout << "You have finished!" << std::endl;
+        }
+        
       }
     }
     
