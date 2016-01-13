@@ -15,3 +15,5 @@ x - wall
 s - start
 e - end
 (later on we will add traps, keys and doors)
+
+We will use a for loop to go over each character in the script and depending on the type push it into an array.
