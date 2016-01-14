@@ -14,6 +14,7 @@ public:
 private:
   float x, y;
   sf::Sprite playerSprite;
+  sf::IntRect playerDimension;
 };
 
 #endif // PLAYER_H
