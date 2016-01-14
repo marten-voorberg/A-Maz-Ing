@@ -7,12 +7,12 @@ public:
   void moveDown();
   void moveLeft();
   void moveRight();
-  
+
   float getPositionX();
   float getPositionY();
-  
+
 private:
   float x, y;
-}
+};
 
 #endif // PLAYER_H
