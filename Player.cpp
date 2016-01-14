@@ -1,8 +1,10 @@
 #include <iostream>
 
 Player::Player() {
-  playerSprite.loadFromFile("images/player.png");
-  player.setTextureRect(playerDimension);
+  sf::Texture playerTexture;
+  playerTexture.loadFromFile("images/player.png");
+  playerDimension = sf::IntRect(50, 0, 50, 50);
+  playerSprite = sf::Sprite(playerTexture, playerDimension);
 }
 
 void Player::moveUp() {
