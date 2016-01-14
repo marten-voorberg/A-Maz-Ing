@@ -13,6 +13,7 @@ public:
 
 private:
   float x, y;
+  sf::Sprite playerSprite;
 };
 
 #endif // PLAYER_H
