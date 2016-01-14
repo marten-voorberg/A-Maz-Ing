@@ -7,9 +7,12 @@
 class Item {
 public:
   Item();
-  
+
   bool canPass;
   sf::Sprite sprite;
+
+  float x, y;
+
 };
 
 // Wall class, which is a subclass of Item
