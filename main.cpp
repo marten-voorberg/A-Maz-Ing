@@ -4,25 +4,6 @@
 #include "Grid.cpp"
 Grid grid("pattern.txt");
 
-// Cross-platform shit
-#ifdef _WINDOWS
-
-  // Windows: Sleep function = Sleep(ms)
-  #include <windows.h>
-  void sleep(int ms) {
-    Sleep(ms);
-  }
-  
-#else
-
-  // Linux: Sleep function = usleep(ms * 1000)
-  #include <unistd.h>
-  void sleep(int ms) {
-    usleep(ms * 1000);
-  }
-  
-#endif
-
 
 
 /*
@@ -127,15 +108,11 @@ int main() {
   sf::RenderWindow renderWindow(sf::VideoMode(300, 300), "Sprite Demo");
   renderWindow.setFramerateLimit(20);
   
-  sf::Texture guyTexture;
-  guyTexture.loadFromFile("images/200by200.png");
+  Player playerClass();
+  sf::Sprite player = playerClass.playerSprite;
   
   sf::Texture blackCircleTexture;
   blackCircleTexture.loadFromFile("images/blackcircle.png");
-  
-  playerDimension = sf::IntRect(50, 0, 50, 50);
-  player = sf::Sprite(guyTexture, playerDimension);
-  player.setPosition(150, 150);
   
   circle = sf::Sprite(blackCircleTexture);
   
