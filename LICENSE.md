@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-### SFML ###
+# SFML
 
 The folder /SFML is downloaded from [SFML](sfml-dev.org), using the following license:
 
@@ -49,8 +49,7 @@ The folder /SFML is downloaded from [SFML](sfml-dev.org), using the following li
 
 
 
-  External libraries used by SFML
-  -------------------------------
+  #### External libraries used by SFML
 
   * OpenAL-Soft is under the LGPL license
   * libjpeg is public domain
@@ -61,7 +60,7 @@ The folder /SFML is downloaded from [SFML](sfml-dev.org), using the following li
   * libflac is under the BSD license
 
 
-### Other files ###
+# Other files
 
   [/images/player.png](http://kupokaze.deviantart.com/art/Pokemon-Trainer-overworld-sprite-public-562406544)
   [/images/wall.jpg](http://img.aws.ehowcdn.com/intl-50x50/ds-photo/getty/article/117/244/89680640.jpg)
