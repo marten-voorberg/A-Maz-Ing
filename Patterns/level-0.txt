@@ -1,5 +1,5 @@
-S.xxx
+..xxx
 x..xE
 xx.x.
-...x.
+S..x.
 xx...

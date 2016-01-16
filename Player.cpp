@@ -3,16 +3,18 @@
 #include "Player.hpp"
 
 // Constructor
-Player::Player(int new_x, int new_y) {
-  // Set location
-  x = new_x;
-  y = new_y;
-  
+Player::Player() {
   // Load texture
-  texture.loadFromFile("images/player.png");
+  texture.loadFromFile("./images/player.png");
   
   dimension = sf::IntRect(50, 0, 50, 50);
   sprite = sf::Sprite(texture, dimension);
+}
+
+void Player::setLocation(int new_x, int new_y) {
+  // Set location
+  x = new_x;
+  y = new_y;
 }
 
 void Player::moveUp(Grid &grid) {

@@ -4,14 +4,15 @@
 #include "Grid.hpp"
 
 // Constructor
-Grid::Grid(std::string filename) {
-
+Grid::Grid() {
   // Reset global variables
   startX = -1;
   startY = -1;
   endX = -1;
   endY = -1;
+}
 
+void Grid::loadFromFile(std::string filename) {
   // Temporary variables
   int x=0, y=0;
 
@@ -102,9 +103,6 @@ void Grid::createPath(int x, int y) {
 
 // Check if given location is a path
 bool Grid::canPass(int x, int y) {
-  
-  std::cout << "(" << x << "," << y << ")" << std::endl;
-  
   return grid[x][y]->canPass;
 }
 

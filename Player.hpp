@@ -7,7 +7,7 @@
 
 class Player {
 public:
-  Player(int x, int y);
+  Player();
   
   // Position on grid
   int x, y;
@@ -19,6 +19,9 @@ public:
   
   // Render player on window
   void render(sf::RenderWindow&);
+  
+  // Set location
+  void setLocation(int x, int y);
   
   // Functions to move on grid
   void moveUp(Grid&);

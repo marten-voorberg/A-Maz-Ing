@@ -1,9 +1,9 @@
 Goals:
 
-- Collision between player and walls
+- Collision between player and walls [ Done ]
 - Black circle around the player
 - Movement with animation sprite
-- Turn a .txt file into a map
+- Turn a file containing a pattern into a map [ Done ]
 - When player moves, move the screen as well
 - Pick up a key and be able to open a door with it
 - Multiple maps

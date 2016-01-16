@@ -6,10 +6,9 @@
 #include "Grid.cpp"
 #include "Player.cpp"
 
-// Load grid from file
-Grid grid("pattern.txt");
-
-// Circle
+// Items
+Grid grid;
+Player player;
 sf::Sprite circle;
 
 // Set the position of the circle
@@ -17,18 +16,25 @@ void setCirclePosition(Player &player) {
   circle.setPosition( player.getPositionX(), player.getPositionY() );
 }
 
+// Check if player is at the end location
+bool isFinished() {
+  return player.x == grid.endX  &&  player.y == grid.endY;
+}
 
 int main() {
   // Create window
-  sf::RenderWindow renderWindow(sf::VideoMode(300, 300), "A-Maz-Ing");
+  sf::RenderWindow renderWindow(sf::VideoMode(250, 250), "A-Maz-Ing");
   renderWindow.setFramerateLimit(20);
   
-  // Create player
-  Player player(grid.startX, grid.startY);
+  // Load grid
+  grid.loadFromFile("./Patterns/level-0.txt");
+  
+  // Set location of player on the start location from the grid
+  player.setLocation(grid.startX, grid.startY);
   
   // Load circle
   sf::Texture blackCircleTexture;
-  blackCircleTexture.loadFromFile("images/blackcircle.png");
+  blackCircleTexture.loadFromFile("./images/blackcircle.png");
   
   circle = sf::Sprite(blackCircleTexture);
   
@@ -88,8 +94,16 @@ int main() {
           renderWindow.close();
         }
         
-        // Check if the player is at the finish point
-        if ( player.x == grid.endX  &&  player.y == grid.endY ) {
+        // CHEAT (RShift + C)
+        else if (
+          sf::Keyboard::isKeyPressed(sf::Keyboard::RShift) &&
+          sf::Keyboard::isKeyPressed(sf::Keyboard::C)
+        ) {
+          player.setLocation(grid.endX, grid.endY);
+        }
+        
+        // Check if the player is at the finish
+        if ( isFinished() ) {
           std::cout << "You have finished!" << std::endl;
         }
         

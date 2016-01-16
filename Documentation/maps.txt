@@ -4,16 +4,16 @@ The items in this array will be positioned automagically.
 
 Map example:
 
-xxxxx
-xsoxx
-xxooo
-xxoxx
-xxexx
+S.xxx
+x..xE
+xx.x.
+...x.
+xx...
 
-o - path
+. - path
 x - wall
-s - start
-e - end
+S - start
+E - end
 (later on we will add traps, keys and doors)
 
-We will use a for loop to go over each character in the script and depending on the type push it into an array.
+We will use a for loop to go over each character in the script and depending on the type put it in a grid.

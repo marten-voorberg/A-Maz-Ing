@@ -1,11 +1,12 @@
 --- Todo List ---
 
 - Grid System: 
- A B C D 
+  0 1 2 3 
+0
 1
 2
 3
-4
+[ Done ]
 
 50px by 50px
 path sprite

@@ -5,7 +5,8 @@
 
 class Grid {
 public:
-  Grid(std::string filename_of_the_pattern );
+  Grid();
+  void loadFromFile(std::string filename);
   
   // Grid with items
   Item* grid[5][5];
