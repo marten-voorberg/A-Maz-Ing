@@ -14,7 +14,7 @@ public:
   int startX, startY, endX, endY;
   
   // Load pattern from file
-  void loadFromFile( std::string filename );
+  void loadFromFile( std::string &filename );
   
   // Check if the given location is a path
   bool canPass( int x, int y );

@@ -13,7 +13,7 @@ Grid::Grid()
 	this->endY   = -1;
 }
 
-void Grid::loadFromFile(std::string filename)
+void Grid::loadFromFile(std::string &filename)
 {
 	// Temporary variables
 	int x = 0, y = 0;
@@ -30,12 +30,10 @@ void Grid::loadFromFile(std::string filename)
 	std::ifstream file( filename.c_str() );
 	
 	// Parse file
-	char c;
 	
 	// Get next char from file
+	char c;
 	while ( file.get(c) ) {
-		
-		
 		switch (c) {
 			case WALL: {
 				createWall(x, y);
@@ -102,7 +100,7 @@ bool Grid::canPass(int x, int y)
 // Create a wall at the given coordinates
 void Grid::createWall(int x, int y)
 {
-	Wall* item = new Wall();
+	Wall *item = new Wall();
 	
 	item->setLocation(x, y);
 	grid[x][y] = item;
@@ -111,7 +109,7 @@ void Grid::createWall(int x, int y)
 // Create a path at the given coordinates
 void Grid::createPath(int x, int y)
 {
-	Path* item = new Path();
+	Path *item = new Path();
 	
 	item->setLocation(x, y);
 	grid[x][y] = item;
@@ -123,7 +121,7 @@ void Grid::render(sf::RenderWindow &window)
 	// foreach Item item in grid:
 	for (int x = 0; x < 5; ++x)   {
 		for (int y = 0; y < 5; ++y) {
-			Item* item = grid[x][y];
+			Item *item = grid[x][y];
 			
 			// Check if item has a value
 			if ( item != NULL ) {
