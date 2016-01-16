@@ -7,10 +7,10 @@
 class Item {
 public:
   Item();
-
+  
   // Position on grid
   int x, y;
-
+  
   // Value if you can pass this item
   bool canPass;
   

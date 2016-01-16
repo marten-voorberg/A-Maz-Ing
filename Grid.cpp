@@ -15,18 +15,18 @@ Grid::Grid() {
 void Grid::loadFromFile(std::string filename) {
   // Temporary variables
   int x=0, y=0;
-
+  
   // File layout
   const char PATH  = '.';
   const char WALL  = 'x';
   const char START = 'S';
   const char END   = 'E';
-
-
+  
+  
   // Open filestream for reading
   // NOTE You need .c_str() because C++ is a bitch
   std::ifstream file( filename.c_str() );
-
+  
   // Parse file
   char c;
   // Get next char from file
@@ -47,7 +47,7 @@ void Grid::loadFromFile(std::string filename) {
       case START: {
         this->startX = x;
         this->startY = y;
-
+        
         createPath(x, y);
         break;
       }
@@ -55,7 +55,7 @@ void Grid::loadFromFile(std::string filename) {
       case END: {
         this->endX = x;
         this->endY = y;
-
+        
         createPath(x, y);
         break;
       }
@@ -80,7 +80,7 @@ void Grid::loadFromFile(std::string filename) {
       x = 0;
     }
   }
-
+  
   // Check if start and end values are set
   if ( startX < 0 || startY < 0 || endX < 0 || endY < 0 ) {
     std::cerr << "Start or finish not set!" << std::endl;

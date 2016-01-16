@@ -29,7 +29,7 @@ public:
   void moveLeft(Grid&);
   void moveRight(Grid&);
   void afterMove();
-
+  
   // Sprite values
   float getPositionX();
   float getPositionY();
