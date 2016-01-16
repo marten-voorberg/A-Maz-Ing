@@ -121,7 +121,7 @@ void Grid::createPath(int x, int y)
 void Grid::render(sf::RenderWindow &window)
 {	
 	// foreach Item item in grid:
-	for (int x = 0; x < 5; ++x) {
+	for (int x = 0; x < 5; ++x)   {
 		for (int y = 0; y < 5; ++y) {
 			Item* item = grid[x][y];
 			
