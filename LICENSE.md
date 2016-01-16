@@ -23,7 +23,7 @@ SOFTWARE.
 
 # SFML
 
-The folder /SFML is downloaded from [SFML](sfml-dev.org), using the following license:
+The folder /SFML is downloaded from [SFML](http://sfml-dev.org/), using the following license:
 
   SFML - Copyright (C) 2007-2015 Laurent Gomila - laurent@sfml-dev.org
 
