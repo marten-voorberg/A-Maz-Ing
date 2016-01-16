@@ -14,12 +14,15 @@ public:
   // Value if you can pass this item
   bool canPass;
   
-  // Sf variables
-  sf::Sprite *sprite;
+  // sf variables
   sf::Texture texture;
+  sf::Sprite  sprite;
   
   // Set location on grid for item
-  void setLocation(int x, int y);
+  void setLocation( int x, int y );
+  
+  // Render item
+  void render( sf::RenderWindow& );
 };
 
 // Wall class, which is a subclass of Item

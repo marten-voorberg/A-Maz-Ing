@@ -7,10 +7,10 @@
 Grid::Grid()
 {
 	// Reset global variables
-	startX = -1;
-	startY = -1;
-	endX = -1;
-	endY = -1;
+	this->startX = -1;
+	this->startY = -1;
+	this->endX   = -1;
+	this->endY   = -1;
 }
 
 void Grid::loadFromFile(std::string filename)
@@ -74,7 +74,7 @@ void Grid::loadFromFile(std::string filename)
 			}
 		}
 		
-		// Check bounds
+		// Next position
 		++x;
 		
 		// The newline is the 5th character, so increase y when x>5
@@ -85,9 +85,18 @@ void Grid::loadFromFile(std::string filename)
 	}
 	
 	// Check if start and end values are set
-	if ( startX < 0 || startY < 0 || endX < 0 || endY < 0 ) {
+	if (
+		this->startX < 0 || this->startY < 0 ||
+		this->endX   < 0 || this->endY   < 0
+	) {
 		std::cerr << "Start or finish not set!" << std::endl;
 	}
+}
+
+// Check if given location is a path
+bool Grid::canPass(int x, int y)
+{
+	return grid[x][y]->canPass;
 }
 
 // Create a wall at the given coordinates
@@ -108,17 +117,9 @@ void Grid::createPath(int x, int y)
 	grid[x][y] = item;
 }
 
-// Check if given location is a path
-bool Grid::canPass(int x, int y)
-{
-	return grid[x][y]->canPass;
-}
-
-
 // Render all items on the window
-void Grid::render(sf::RenderWindow &renderWindow)
-{
-	
+void Grid::render(sf::RenderWindow &window)
+{	
 	// foreach Item item in grid:
 	for (int x = 0; x < 5; ++x) {
 		for (int y = 0; y < 5; ++y) {
@@ -126,12 +127,11 @@ void Grid::render(sf::RenderWindow &renderWindow)
 			
 			// Check if item has a value
 			if ( item != NULL ) {
-				renderWindow.draw( *item->sprite );
+				item->render( window );
 				
 			} else { // Something weird happened
 				// Log failure
-				std::cerr << "(" << x << "," << y << "): ";
-				std::cerr << "does not contain any item!" << std::endl;
+				std::cerr << "(" << x << ", " << y << ") does not contain any item!" << std::endl;
 			}
 		}
 	}

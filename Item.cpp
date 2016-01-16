@@ -10,35 +10,35 @@ Item::Item()
 
 void Item::setLocation(int new_x, int new_y)
 {
-	x = new_x;
-	y = new_y;
+	this->x = new_x;
+	this->y = new_y;
 	
-	if ( sprite != NULL ) {
-		// Set position of sprite
-		sprite->setPosition( 50 * x, 50 * y );
-	} else {
-		// No sprite set ?! Stupid user
-		std::cerr << "You're working with an Item class without a sprite" << std::endl;
-		std::cerr << "You should first add a sprite, or use the Wall or Path class" << std::endl;
-	}
+	this->sprite.setPosition( 50 * this->x, 50 * this->y );
 }
+
+void Item::render(sf::RenderWindow &window)
+{
+	window.draw( this->sprite );
+}
+
+
 
 // Wall constructor
 Wall::Wall()
 {
-	canPass = false;
+	this->canPass = false;
 	
 	// Load sprite
-	texture.loadFromFile("./images/wall.jpg");
-	sprite = new sf::Sprite(texture);
+	this->texture .loadFromFile ( "./images/wall.jpg" );
+	this->sprite  = sf::Sprite  ( this->texture       );
 }
 
 // Path constructor
 Path::Path()
 {
-	canPass = true;
+	this->canPass = true;
 	
 	// Load sprite
-	texture.loadFromFile("./images/path.jpg");
-	sprite = new sf::Sprite(texture);
+	this->texture .loadFromFile ( "./images/path.jpg" );
+	this->sprite  = sf::Sprite  ( this->texture       );
 }

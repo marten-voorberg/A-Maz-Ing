@@ -6,10 +6,9 @@
 Player::Player()
 {
 	// Load texture
-	texture.loadFromFile("./images/player.png");
-	
-	dimension = sf::IntRect(50, 0, 50, 50);
-	sprite = sf::Sprite(texture, dimension);
+	texture   .loadFromFile ( "./images/player.png" );
+	dimension = sf::IntRect ( 50, 0, 50, 50      );
+	sprite    = sf::Sprite  ( texture, dimension );
 }
 
 void Player::setLocation(int new_x, int new_y)
@@ -27,7 +26,7 @@ void Player::moveUp(Grid &grid)
 	}
 	
 	// If destination is a wall
-	if ( !grid.canPass( x, y - 1 ) ) {
+	if ( ! grid.canPass( x, y - 1 ) ) {
 		return;
 	}
 	
@@ -44,8 +43,8 @@ void Player::moveUp(Grid &grid)
 	}
 	
 	// Update sprite
-	sprite.setTextureRect(dimension);
-	sprite.move(0, -10);
+	sprite.setTextureRect( dimension );
+	sprite.move( 0, -10 );
 	
 	// Do the aftermoves
 	afterMove();
@@ -59,7 +58,7 @@ void Player::moveDown(Grid &grid)
 	}
 	
 	// If destination is a wall
-	if ( !grid.canPass( x, y + 1 ) ) {
+	if ( ! grid.canPass( x, y + 1 ) ) {
 		return;
 	}
 	
@@ -76,8 +75,8 @@ void Player::moveDown(Grid &grid)
 	}
 	
 	// Update sprite
-	sprite.setTextureRect(dimension);
-	sprite.move(0, 10);
+	sprite.setTextureRect( dimension );
+	sprite.move( 0, 10 );
 	
 	// Do the aftermoves
 	afterMove();
@@ -92,7 +91,7 @@ void Player::moveLeft(Grid &grid)
 	}
 	
 	// If destination is a wall
-	if ( !grid.canPass( x - 1, y ) ) {
+	if ( ! grid.canPass( x - 1, y ) ) {
 		return;
 	}
 	
@@ -109,8 +108,8 @@ void Player::moveLeft(Grid &grid)
 	}
 	
 	// Update sprite
-	sprite.setTextureRect(dimension);
-	sprite.move(-10, 0);
+	sprite.setTextureRect( dimension );
+	sprite.move( -10, 0 );
 	
 	// Do the aftermoves
 	afterMove();
@@ -124,7 +123,7 @@ void Player::moveRight(Grid &grid)
 	}
 	
 	// Check destination for wall
-	if ( !grid.canPass( x + 1, y ) ) {
+	if ( ! grid.canPass( x + 1, y ) ) {
 		return;
 	}
 	
@@ -141,8 +140,8 @@ void Player::moveRight(Grid &grid)
 	}
 	
 	// Update sprite
-	sprite.setTextureRect(dimension);
-	sprite.move(10, 0);
+	sprite.setTextureRect( dimension );
+	sprite.move( 10, 0 );
 	
 	// Do the aftermoves
 	afterMove();
@@ -157,7 +156,7 @@ void Player::afterMove()
 // Render on window
 void Player::render(sf::RenderWindow &window)
 {
-	window.draw(sprite);
+	window.draw( sprite );
 }
 
 // Get sprite positions
@@ -165,6 +164,7 @@ float Player::getPositionX()
 {
 	return sprite.getPosition().x;
 }
+
 float Player::getPositionY()
 {
 	return sprite.getPosition().y;
@@ -175,6 +175,7 @@ float Player::getWidth()
 {
 	return sprite.getLocalBounds().width;
 }
+
 float Player::getHeight()
 {
 	return sprite.getLocalBounds().height;

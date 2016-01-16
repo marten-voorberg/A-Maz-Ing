@@ -6,7 +6,6 @@
 class Grid {
 public:
   Grid();
-  void loadFromFile(std::string filename);
   
   // Grid with items
   Item* grid[5][5];
@@ -14,15 +13,18 @@ public:
   // Coordinates of the start and end
   int startX, startY, endX, endY;
   
-  // Check if the given locatoin is a path
-  bool canPass(int x, int y);
+  // Load pattern from file
+  void loadFromFile( std::string filename );
+  
+  // Check if the given location is a path
+  bool canPass( int x, int y );
   
   // Functions to add objects to grid
-  void createWall(int x, int y);
-  void createPath(int x, int y);
+  void createWall ( int x, int y );
+  void createPath ( int x, int y );
   
   // Render all items on window
-  void render(sf::RenderWindow& window);
+  void render( sf::RenderWindow& );
 };
 
 #endif // GRID_H
