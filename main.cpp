@@ -1,184 +1,117 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
+// Include all classes
+#include "Item.cpp"
 #include "Grid.cpp"
+#include "Player.cpp"
+
+// Load grid from file
 Grid grid("pattern.txt");
 
+// Circle
+sf::Sprite circle;
 
-
-/*
-WIP
-const int FPS = 25;
-const int Skip = 1000 / FPS;
-*/
-
-sf::Sprite player, circle;
-sf::IntRect playerDimension;
-
-void moveUp() {
-  
-  // If destination is a wall
-  if ( ! grid.canPass( grid.playerX, grid.playerY-1 ) ) {
-    return;
-  }
-  
-  --grid.playerY;
-  
-  playerDimension.top = 150;
-  
-  if (playerDimension.left == 150) {
-    playerDimension.left = 0;
-  } else {
-    playerDimension.left += 50;
-  }
-  
-  player.setTextureRect(playerDimension);
-  player.move(0, -10);
-  circle.setPosition(player.getPosition().x, player.getPosition().y);
-}
-
-void moveDown() {
-  
-  // If destination is a wall
-  if ( ! grid.canPass( grid.playerX, grid.playerY+1 ) ) {
-    return;
-  }
-  
-  ++grid.playerY;
-  
-  playerDimension.top = 0;
-  
-  if (playerDimension.left == 150) {
-    playerDimension.left = 0;
-  } else {
-    playerDimension.left += 50;
-  }
-  
-  player.setTextureRect(playerDimension);
-  player.move(0, 10);
-  circle.setPosition(player.getPosition().x, player.getPosition().y);
-}
-
-void moveLeft() {
-  
-  // If destination is a wall
-  if ( ! grid.canPass( grid.playerX-1, grid.playerY ) ) {
-    return;
-  }
-  
-  --grid.playerX;
-  
-  playerDimension.top = 50;
-  
-  if (playerDimension.left == 150) {
-    playerDimension.left = 0;
-  } else {
-    playerDimension.left += 50;
-  }
-  
-  player.setTextureRect(playerDimension);
-  player.move(-10, 0);
-  circle.setPosition(player.getPosition().x, player.getPosition().y);
-}
-
-void moveRight() {
-  
-  // If destination is a wall
-  if ( ! grid.canPass( grid.playerX+1, grid.playerY ) ) {
-    return;
-  }
-  
-  ++grid.playerX;
-  
-  playerDimension.top = 100;
-  
-  if (playerDimension.left == 150) {
-    playerDimension.left = 0;
-  } else {
-    playerDimension.left += 50;
-  }
-  
-  player.setTextureRect(playerDimension);
-  player.move(10, 0);
-  circle.setPosition(player.getPosition().x, player.getPosition().y);
+// Set the position of the circle
+void setCirclePosition(Player &player) {
+  circle.setPosition( player.getPositionX(), player.getPositionY() );
 }
 
 
 int main() {
-  sf::RenderWindow renderWindow(sf::VideoMode(300, 300), "Sprite Demo");
+  // Create window
+  sf::RenderWindow renderWindow(sf::VideoMode(300, 300), "A-Maz-Ing");
   renderWindow.setFramerateLimit(20);
   
-  Player playerClass();
-  sf::Sprite player = playerClass.playerSprite;
+  // Create player
+  Player player(grid.startX, grid.startY);
   
+  // Load circle
   sf::Texture blackCircleTexture;
   blackCircleTexture.loadFromFile("images/blackcircle.png");
   
   circle = sf::Sprite(blackCircleTexture);
   
+  // Position circle
   circle.setOrigin(sf::Vector2f (
     circle.getLocalBounds().width  / 2,
     circle.getLocalBounds().height / 2
   ));
   
   circle.setPosition (
-    player.getPosition().x + player.getLocalBounds().width  + player.getLocalBounds().width / 2,
-    
-    //                                                                @Marten  ------v  .width, niet .height ?
-    player.getPosition().y + player.getLocalBounds().height + player.getLocalBounds().width / 2
+    player.getPositionX() + player.getWidth()  * 1.5,
+    player.getPositionY() + player.getHeight() * 1.5
   );
   
+  
+  // Window loop
   sf::Event event;
   while (renderWindow.isOpen()) {
-    /*
-      next_game_tick += SKIP_TICKS;
-      sleep_time = next_game_tick - GetTickCount();
-      if (sleep_time >= 0) {
-        sleep(sleep_time);
-      } else {
-        // Shit, we are running behind!
-      }
-    */
-    
+    // Check for events
     while (renderWindow.pollEvent(event)) {
+      
+      // If window has to close
       if (event.type == sf::Event::Closed) {
         renderWindow.close();
       }
       
+      // If a key is pressed
       else if (event.type == sf::Event::KeyPressed) {
         int key = event.key.code;
         
-        #define LOG std::cout << grid.playerX << ", " << grid.playerY << std::endl;
-        
+        // Arrow UP
         if ( key == sf::Keyboard::Up ) {
-          moveUp();
-          LOG;
-        }
-        else if ( key == sf::Keyboard::Down ) {
-          moveDown();
-          LOG;
-        }
-        else if ( key == sf::Keyboard::Left ) {
-          moveLeft();
-          LOG;
-        }
-        else if ( key == sf::Keyboard::Right ) {
-          moveRight();
-          LOG;
+          player.moveUp(grid);
+          setCirclePosition(player);
         }
         
-        if(grid.isFinished()) {
+        // Arrow DOWN
+        else if ( key == sf::Keyboard::Down ) {
+          player.moveDown(grid);
+          setCirclePosition(player);
+        }
+        
+        // Arrow LEFT
+        else if ( key == sf::Keyboard::Left ) {
+          player.moveLeft(grid);
+          setCirclePosition(player);
+        }
+        
+        // Arrow RIGHT
+        else if ( key == sf::Keyboard::Right ) {
+          player.moveRight(grid);
+          setCirclePosition(player);
+        }
+        
+        // Escape
+        else if ( key == sf::Keyboard::Escape ) {
+          renderWindow.close();
+        }
+        
+        // Check if the player is at the finish point
+        if ( player.x == grid.endX  &&  player.y == grid.endY ) {
           std::cout << "You have finished!" << std::endl;
         }
         
       }
     }
     
-    renderWindow.clear(sf::Color::White);
-    renderWindow.draw(player);
+    // Clear window
+    renderWindow.clear(sf::Color::Cyan);
+    
+    // Render all items in grid
+    grid.render(renderWindow);
+    
+    // Render player
+    player.render(renderWindow);
+    
+    // Render circle
     renderWindow.draw(circle);
+    
+    // Display all items
     renderWindow.display();
     
-    sleep(100);
+    // Sleep 100 ms
+    sf::sleep( sf::milliseconds(100) );
   }
 }

@@ -1,25 +1,29 @@
 #include "Item.hpp"
 
+// Item constructor
 Item::Item() {
   
 }
 
-Wall::Wall() {
-  this->canPass = false; // Item.canPass
-  
-  sf::Texture texture;
-  texture.loadFromFile("images/Wall.png");
-  sf::Sprite mysprite(texture);
-  
-  this->sprite = mysprite; // Item.sprite = Wall.mysprite 
+void Item::setLocation(int new_x, int new_y) {
+  x = new_x;
+  y = new_y;
 }
 
-Path::Path() {
-  this->canPass = true; // Item.canPass
+// Wall constructor
+Wall::Wall() {
+  canPass = false;
   
-  sf::Texture texture;
-  texture.loadFromFile("images/Path.png");
-  sf::Sprite mysprite(texture);
+  // Load sprite
+  texture.loadFromFile("images/wall.jpg");
+  sprite = new sf::Sprite(texture);
+}
 
-  this->sprite = mysprite; // Item.sprite = Path.mysprite
+// Path constructor
+Path::Path() {
+  canPass = true;
+  
+  // Load sprite
+  texture.loadFromFile("images/path.png");
+  sprite = new sf::Sprite(texture);
 }

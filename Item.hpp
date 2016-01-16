@@ -8,11 +8,18 @@ class Item {
 public:
   Item();
 
+  // Position on grid
+  int x, y;
+
+  // Value if you can pass this item
   bool canPass;
-  sf::Sprite sprite;
-
-  float x, y;
-
+  
+  // Sf variables
+  sf::Sprite *sprite;
+  sf::Texture texture;
+  
+  // Set location on grid for item
+  void setLocation(int x, int y);
 };
 
 // Wall class, which is a subclass of Item

@@ -1,20 +1,37 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "SFML/Graphics.hpp"
+
+#include "Grid.hpp"
+
 class Player {
 public:
-  void moveUp();
-  void moveDown();
-  void moveLeft();
-  void moveRight();
+  Player(int x, int y);
+  
+  // Position on grid
+  int x, y;
+  
+  // sf variables
+  sf::Sprite sprite;
+  sf::Texture texture;
+  sf::IntRect dimension;
+  
+  // Render player on window
+  void render(sf::RenderWindow&);
+  
+  // Functions to move on grid
+  void moveUp(Grid&);
+  void moveDown(Grid&);
+  void moveLeft(Grid&);
+  void moveRight(Grid&);
+  void afterMove();
 
+  // Sprite values
   float getPositionX();
   float getPositionY();
-
-private:
-  float x, y;
-  sf::Sprite playerSprite;
-  sf::IntRect playerDimension;
+  float getWidth();
+  float getHeight();
 };
 
 #endif // PLAYER_H

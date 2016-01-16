@@ -1,23 +1,27 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include "Item.cpp"
+#include "Item.hpp"
 
 class Grid {
 public:
-  Grid(std::string);
+  Grid(std::string filename_of_the_pattern );
   
-  bool canPass(int, int);
-  inline bool isFinished() {
-    return playerX==endX && playerY==endY;
-  }
-  
+  // Grid with items
   Item* grid[5][5];
   
-  int playerX, playerY, endX, endY;
+  // Coordinates of the start and end
+  int startX, startY, endX, endY;
   
-private:
-  int x=0, y=0;
+  // Check if the given locatoin is a path
+  bool canPass(int x, int y);
+  
+  // Functions to add objects to grid
+  void createWall(int x, int y);
+  void createPath(int x, int y);
+  
+  // Render all items on window
+  void render(sf::RenderWindow& window);
 };
 
 #endif // GRID_H

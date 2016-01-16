@@ -22,3 +22,8 @@ SOFTWARE.
 
 
 The folder /SFML is downloaded from [SFML](sfml-dev.org)
+
+Sources for each file:
+  [/images/player.png](http://kupokaze.deviantart.com/art/Pokemon-Trainer-overworld-sprite-public-562406544)
+  [/images/wall.jpg](http://img.aws.ehowcdn.com/intl-50x50/ds-photo/getty/article/117/244/89680640.jpg)
+  [/images/path.jpg](http://image.hominter.com/wsphoto/14_03_30/50X50_e06f9a65aa/stone-glass-mosaic-tile-grey-wood-pattern-wall-marble-tiles-backsplash-mosaic-tile-sgs47.jpg)

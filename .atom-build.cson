@@ -1,6 +1,19 @@
-name: "Make and run"
-sh: true
+name: "make"
 cmd: "make"
-args: [
-  "run"
-]
+sh: true
+
+targets:
+  "make run":
+    cmd: "make"
+    sh: true
+    args: [ "run" ]
+  
+  "make && make run":
+    cmd: "make"
+    sh: true
+    args: [ "&&", "make", "run" ]
+  
+  "make clean":
+    cmd: "make"
+    sh: true
+    args: [ "clean" ]
