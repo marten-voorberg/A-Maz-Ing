@@ -17,7 +17,7 @@ public:
   sf::IntRect dimension;
   sf::Sprite  sprite;
   
-  // Set location
+  // Set location on grid
   void setLocation( int x, int y );
   
   // Functions to move on grid

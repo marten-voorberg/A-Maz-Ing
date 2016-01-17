@@ -6,16 +6,16 @@
 Player::Player()
 {
 	// Load texture
-	texture   .loadFromFile ( "./images/player.png" );
-	dimension = sf::IntRect ( 50, 0, 50, 50      );
-	sprite    = sf::Sprite  ( texture, dimension );
+	this->texture   .loadFromFile ( "./images/player.png" );
+	this->dimension = sf::IntRect ( 50, 0, 50, 50      );
+	this->sprite    = sf::Sprite  ( this->texture, this->dimension );
 }
 
 void Player::setLocation(int new_x, int new_y)
 {
 	// Set location
-	x = new_x;
-	y = new_y;
+	this->x = new_x;
+	this->y = new_y;
 }
 
 void Player::moveUp(Grid &grid)

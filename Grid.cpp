@@ -13,7 +13,7 @@ Grid::Grid()
 	this->endY   = -1;
 }
 
-void Grid::loadFromFile(std::string &filename)
+void Grid::loadFromFile(const std::string &filename)
 {
 	// Temporary variables
 	int x = 0, y = 0;
@@ -26,12 +26,12 @@ void Grid::loadFromFile(std::string &filename)
 	
 	
 	// Open filestream for reading
-	// NOTE You need .c_str() because C++ is a bitch
+	// NOTE You need .c_str() because C++ is a *bitch*
 	std::ifstream file( filename.c_str() );
 	
 	// Parse file
 	
-	// Get next char from file
+	// Get char by char from file
 	char c;
 	while ( file.get(c) ) {
 		switch (c) {
@@ -46,6 +46,7 @@ void Grid::loadFromFile(std::string &filename)
 			}
 			
 			case START: {
+				// Set values
 				this->startX = x;
 				this->startY = y;
 				
@@ -54,6 +55,7 @@ void Grid::loadFromFile(std::string &filename)
 			}
 			
 			case END: {
+				// Set values
 				this->endX = x;
 				this->endY = y;
 				
@@ -100,18 +102,26 @@ bool Grid::canPass(int x, int y)
 // Create a wall at the given coordinates
 void Grid::createWall(int x, int y)
 {
+	// Create item
 	Wall *item = new Wall();
 	
+	// Set location
 	item->setLocation(x, y);
+	
+	// Add to grid
 	grid[x][y] = item;
 }
 
 // Create a path at the given coordinates
 void Grid::createPath(int x, int y)
 {
+	// Create item
 	Path *item = new Path();
 	
+	// Set location
 	item->setLocation(x, y);
+	
+	// Add to grid
 	grid[x][y] = item;
 }
 
@@ -121,13 +131,15 @@ void Grid::render(sf::RenderWindow &window)
 	// foreach Item item in grid:
 	for (int x = 0; x < 5; ++x)   {
 		for (int y = 0; y < 5; ++y) {
+			// Get item from grid
 			Item *item = grid[x][y];
 			
 			// Check if item has a value
 			if ( item != NULL ) {
+				// Render item
 				item->render( window );
 				
-			} else { // Something weird happened
+			} else { // Something weird happened (No item on grid)
 				// Log failure
 				std::cerr << "(" << x << ", " << y << ") does not contain any item!" << std::endl;
 			}

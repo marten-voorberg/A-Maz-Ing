@@ -47,8 +47,12 @@ Grid.o: Grid.hpp Grid.cpp  Item.o
 Player.o: Player.hpp Player.cpp  Grid.o
 	$(CPP) $(CPPFLAGS) -c Player.hpp Player.cpp
 
-# Main class (Requires Item class, Grid class, and Player class)
-main.o: main.cpp  Item.o Grid.o Player.o
+# Circle class
+Circle.o: Circle.hpp Circle.cpp
+	$(CPP) $(CPPFLAGS) -c Circle.hpp Circle.cpp
+
+# Main class (Requires Item class, Grid class, Player class, Circle class)
+main.o: main.cpp  Item.o Grid.o Player.o Circle.o
 	$(CPP) $(CPPFLAGS) -c main.cpp
 
 # Actual program (Requires Main class)

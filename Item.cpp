@@ -8,14 +8,17 @@ Item::Item()
 	
 }
 
+// Set the grid location of the item
 void Item::setLocation(int new_x, int new_y)
 {
 	this->x = new_x;
 	this->y = new_y;
 	
+	// Update sprite
 	this->sprite.setPosition( 50 * this->x, 50 * this->y );
 }
 
+// Render item on window
 void Item::render(sf::RenderWindow &window)
 {
 	window.draw( this->sprite );
