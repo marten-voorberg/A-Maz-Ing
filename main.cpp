@@ -57,6 +57,7 @@ int main()
 			if (event.type == sf::Event::Closed) {
 				window.close();
 			}
+			
 			// If a key is pressed
 			else if (event.type == sf::Event::KeyPressed) {
 				int key = event.key.code;
@@ -66,25 +67,30 @@ int main()
 					player.moveUp( grid   );
 					setCirclePosition( player );
 				}
+				
 				// Arrow DOWN
 				else if (key == sf::Keyboard::Down) {
 					player.moveDown( grid   );
 					setCirclePosition( player );
 				}
+				
 				// Arrow LEFT
 				else if (key == sf::Keyboard::Left) {
 					player.moveLeft( grid   );
 					setCirclePosition( player );
 				}
+				
 				// Arrow RIGHT
 				else if (key == sf::Keyboard::Right) {
 					player.moveRight( grid   );
 					setCirclePosition( player );
 				}
+				
 				// Escape
 				else if (key == sf::Keyboard::Escape) {
 					window.close();
 				}
+				
 				// CHEAT (RShift + C)
 				else if (
 					sf::Keyboard::isKeyPressed( sf::Keyboard::RShift ) &&

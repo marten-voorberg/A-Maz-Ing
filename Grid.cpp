@@ -96,7 +96,7 @@ void Grid::loadFromFile(const std::string &filename)
 // Check if given location is a path
 bool Grid::canPass(int x, int y)
 {
-	return grid[x][y]->canPass;
+	return this->grid[x][y]->canPass;
 }
 
 // Create a wall at the given coordinates
@@ -109,7 +109,7 @@ void Grid::createWall(int x, int y)
 	item->setLocation(x, y);
 	
 	// Add to grid
-	grid[x][y] = item;
+	this->grid[x][y] = item;
 }
 
 // Create a path at the given coordinates
@@ -122,7 +122,7 @@ void Grid::createPath(int x, int y)
 	item->setLocation(x, y);
 	
 	// Add to grid
-	grid[x][y] = item;
+	this->grid[x][y] = item;
 }
 
 // Render all items on the window
@@ -132,7 +132,7 @@ void Grid::render(sf::RenderWindow &window)
 	for (int x = 0; x < 5; ++x)   {
 		for (int y = 0; y < 5; ++y) {
 			// Get item from grid
-			Item *item = grid[x][y];
+			Item *item = this->grid[x][y];
 			
 			// Check if item has a value
 			if ( item != NULL ) {

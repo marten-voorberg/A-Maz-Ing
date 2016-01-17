@@ -1,14 +1,15 @@
 #include "Circle.hpp"
 
+// Circle constructor
 Circle::Circle()
 {
 	this->texture .loadFromFile ( "./images/blackcircle.png" );
 	this->sprite  = sf::Sprite  ( this->texture );
 	
 	// Position circle
-	sprite.setOrigin( sf::Vector2f (
-		sprite.getLocalBounds().width  / 2,
-		sprite.getLocalBounds().height / 2
+	this->sprite.setOrigin( sf::Vector2f (
+		this->sprite.getLocalBounds().width  / 2,
+		this->sprite.getLocalBounds().height / 2
 	));
 }
 

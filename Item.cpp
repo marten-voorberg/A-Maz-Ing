@@ -5,7 +5,7 @@
 // Item constructor
 Item::Item()
 {
-	
+	// Yes, this is empty.
 }
 
 // Set the grid location of the item
