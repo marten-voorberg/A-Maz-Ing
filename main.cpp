@@ -3,10 +3,10 @@
 #include "SFML/Graphics.hpp"
 
 // Include all classes
+#include "Circle.cpp"
 #include "Item.cpp"
 #include "Grid.cpp"
 #include "Player.cpp"
-#include "Circle.cpp"
 
 // Items
 Grid		grid;

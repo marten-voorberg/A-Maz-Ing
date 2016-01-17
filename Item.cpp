@@ -36,6 +36,8 @@ Wall::Wall()
 	this->sprite  = sf::Sprite  ( this->texture       );
 }
 
+
+
 // Path constructor
 Path::Path()
 {
