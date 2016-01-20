@@ -32,7 +32,7 @@ Wall::Wall()
 	this->canPass = false;
 	
 	// Load sprite
-	this->texture .loadFromFile ( "./images/wall.jpg" );
+	this->texture .loadFromFile ( "./images/wall.png" );
 	this->sprite  = sf::Sprite  ( this->texture       );
 }
 
