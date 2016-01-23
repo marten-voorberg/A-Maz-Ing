@@ -1,0 +1,10 @@
+﻿  Player.cpp
+  main.cpp
+c:\users\c_bou\desktop\a-maz-ing\main.cpp(46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Item.cpp
+c:\users\c_bou\desktop\a-maz-ing\item.cpp(18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Grid.cpp
+  Circle.cpp
+  Generating Code...
+  A-Maz-Ing.vcxproj -> C:\Users\c_bou\Desktop\A-Maz-Ing\A-Maz-Ing\x64\Debug\A-Maz-Ing.exe
+  A-Maz-Ing.vcxproj -> C:\Users\c_bou\Desktop\A-Maz-Ing\A-Maz-Ing\x64\Debug\A-Maz-Ing.pdb (Partial PDB)

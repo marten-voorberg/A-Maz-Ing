@@ -13,7 +13,7 @@ public:
   sf::Sprite  sprite;
   
   /// Set position of sprite
-  void setPosition(int x, int y);
+  void setPosition(float x, float y);
   
   /// Render circle on window 
   void render(sf::RenderWindow&);

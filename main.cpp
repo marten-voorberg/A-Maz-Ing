@@ -3,13 +3,13 @@
 #include "SFML/Graphics.hpp"
 
 // Include all classes
-#include "Circle.cpp"
-#include "Item.cpp"
-#include "Grid.cpp"
-#include "Player.cpp"
+#include "Circle.hpp"
+#include "Item.hpp"
+#include "Grid.hpp"
+#include "Player.hpp"
 
 // Items
-Grid		grid;
+Grid	grid;
 Player	player;
 Circle	circle;
 

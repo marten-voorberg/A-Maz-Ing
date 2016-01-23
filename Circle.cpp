@@ -14,7 +14,7 @@ Circle::Circle()
 }
 
 // Set sprite position
-void Circle::setPosition(int x, int y)
+void Circle::setPosition(float x, float y)
 {
   this->sprite.setPosition(x, y);
 }

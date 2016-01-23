@@ -29,6 +29,11 @@ void Grid::loadFromFile(const std::string &filename)
 	// NOTE You need .c_str() because C++ is a *bitch*
 	std::ifstream file( filename.c_str() );
 	
+	if (!file.is_open()) {
+		std::cerr << "Failed to open pattern file!" << std::endl;
+		exit(1);
+	}
+
 	// Parse file
 	
 	// Get char by char from file
