@@ -56,6 +56,6 @@ main.o: main.cpp  Circle.o Item.o Grid.o Player.o
 	$(CPP) $(CPPFLAGS) -c main.cpp
 	
 # Actual program (Requires Main class)
-main: main.o
-	$(CPP) $(CPPFLAGS) main.o -o $(OUTPUTFILE)  $(LIBS)
+main: main.o Player.o Grid.o Item.o Circle.o
+	$(CPP) $(CPPFLAGS) main.o Player.o Grid.o Item.o Circle.o -o $(OUTPUTFILE)  $(LIBS)
 	
