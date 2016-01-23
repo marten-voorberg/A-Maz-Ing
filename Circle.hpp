@@ -3,6 +3,7 @@
 
 #include "SFML/Graphics.hpp"
 
+/// A class which renders the black circle around the Player
 class Circle {
 public:
   Circle();
@@ -11,10 +12,10 @@ public:
   sf::Texture texture;
   sf::Sprite  sprite;
   
-  // Set position of sprite
+  /// Set position of sprite
   void setPosition(int x, int y);
   
-  // Render circle on window
+  /// Render circle on window 
   void render(sf::RenderWindow&);
 };
 

@@ -5,11 +5,12 @@
 
 #include "Grid.hpp"
 
+/// The player who walks across the Grid
 class Player {
 public:
   Player();
   
-  // Position on grid
+  // Position on Grid
   int x, y;
   
   // sf variables
@@ -17,17 +18,25 @@ public:
   sf::IntRect dimension;
   sf::Sprite  sprite;
   
-  // Set location on grid
+  /// Set location on Grid
   void setLocation( int x, int y );
   
-  // Functions to move on grid
+  /// Move up on the Grid
   void moveUp    ( Grid& );
+  
+  /// Move down on the Grid
   void moveDown  ( Grid& );
+  
+  /// Move left on the Grid
   void moveLeft  ( Grid& );
+  
+  /// Move right on the Grid
   void moveRight ( Grid& );
+  
+  /// Called after the player has moved
   void afterMove ();
   
-  // Render player on window
+  /// Render player on window
   void render( sf::RenderWindow& );
   
   // Sprite values

@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classItem.html" title="A class representing an item on the Grid. " alt="" coords="5,31,53,57"/>
+<area shape="rect" id="node2" href="$classPath.html" title="A class representing a path on the Grid. " alt="" coords="101,5,151,32"/>
+<area shape="rect" id="node3" href="$classWall.html" title="A class representing a wall on the Grid. " alt="" coords="102,56,150,83"/>
+</map>
